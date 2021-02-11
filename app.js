@@ -1,7 +1,11 @@
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 8080;
-const http = require("http").createServer();
+const http = require("http").createServer(function (req, res) {
+  res.writeHead(200, { "Content-Type": "text/html" });
+  res.write("SocketIO App");
+  res.end();
+});
 
 const io = require("socket.io")(http);
 
